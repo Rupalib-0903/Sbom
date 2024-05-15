@@ -1,0 +1,44 @@
+2024-05-14 21:38:58,378 - DEBUG - __main__ - Starting...
+2024-05-14 21:38:58,379 - DEBUG - prep - Setting up...
+2024-05-14 21:38:58,557 - DEBUG - rootfs - Running command: sudo chmod +x /home/rupali/.local/lib/python3.10/site-packages/tern/tools/fs_hash.sh
+2024-05-14 21:39:08,742 - DEBUG - run - Starting analysis...
+2024-05-14 21:39:08,742 - DEBUG - skopeo - Attempting to pull image "debian:jessie"
+2024-05-14 21:39:08,742 - DEBUG - rootfs - Running command: skopeo copy docker://debian:jessie dir:/home/rupali/.tern/temp
+2024-05-14 21:39:23,494 - DEBUG - skopeo - Inspecting remote image "debian:jessie"
+2024-05-14 21:39:23,494 - DEBUG - rootfs - Running command: skopeo inspect docker://debian:jessie
+2024-05-14 21:39:33,151 - DEBUG - rootfs - Running command: tar -tf /home/rupali/.tern/temp/b82b9923b08dfd4c2a83d1669b67a3a0c12f2d17fc989315c05f201eabc33b52
+2024-05-14 21:39:34,009 - DEBUG - rootfs - Running command: tar -x -f /home/rupali/.tern/temp/b82b9923b08dfd4c2a83d1669b67a3a0c12f2d17fc989315c05f201eabc33b52 -C /home/rupali/.tern/temp/1/contents
+2024-05-14 21:39:34,991 - DEBUG - rootfs - Running command: sudo /home/rupali/.local/lib/python3.10/site-packages/tern/tools/fs_hash.sh /home/rupali/.tern/temp/1/contents
+2024-05-14 21:39:46,882 - DEBUG - common - Reading files in filesystem...
+2024-05-14 21:39:48,884 - DEBUG - rootfs - Running command: tar -tf /home/rupali/.tern/temp/b82b9923b08dfd4c2a83d1669b67a3a0c12f2d17fc989315c05f201eabc33b52
+2024-05-14 21:39:49,731 - DEBUG - rootfs - Running command: tar -x -f /home/rupali/.tern/temp/b82b9923b08dfd4c2a83d1669b67a3a0c12f2d17fc989315c05f201eabc33b52 -C /home/rupali/.tern/temp/mergedir
+2024-05-14 21:39:50,722 - DEBUG - rootfs - Running command: sudo mknod /home/rupali/.tern/temp/mergedir/dev/urandom c 1 9
+2024-05-14 21:39:50,750 - DEBUG - rootfs - Running command: sudo cp /etc/resolv.conf /home/rupali/.tern/temp/mergedir/etc/resolv.conf
+2024-05-14 21:39:50,768 - DEBUG - core - Collecting metadata for image layer...
+2024-05-14 21:39:50,768 - DEBUG - rootfs - Running command: sudo chroot /home/rupali/.tern/temp/mergedir /bin/sh -c pkgs=`dpkg-query -W -f '${Package}
+'` && for p in $pkgs; do files=`dpkg-query -L $p`; for file in $files; do if [ -f $file ]; then echo $file; fi; done; echo LICF; done
+2024-05-14 21:39:51,169 - DEBUG - rootfs - Running command: sudo chroot /home/rupali/.tern/temp/mergedir /bin/sh -c pkgs=`dpkg-query -W -f '${Package}
+'` && for p in $pkgs; do dpkg-query -f '${source:Package}
+' -W $p; done
+2024-05-14 21:39:51,474 - DEBUG - rootfs - Running command: sudo chroot /home/rupali/.tern/temp/mergedir /bin/sh -c pkgs=`dpkg-query -W -f '${Package}
+'` && for p in $pkgs; do /bin/cat /usr/share/doc/$p/copyright; echo LICF; done
+2024-05-14 21:39:51,577 - DEBUG - rootfs - Running command: sudo chroot /home/rupali/.tern/temp/mergedir /bin/sh -c dpkg-query -W -f '${Homepage}
+' | /bin/sed 's/^$/Unknown/'
+2024-05-14 21:39:51,589 - DEBUG - rootfs - Running command: sudo chroot /home/rupali/.tern/temp/mergedir /bin/sh -c pkgs=`dpkg-query -W -f '${Package}
+'` && for p in $pkgs; do dpkg-query -f '${source:Version}
+' -W $p; done
+2024-05-14 21:39:51,896 - DEBUG - rootfs - Running command: sudo chroot /home/rupali/.tern/temp/mergedir /bin/sh -c dpkg-query -W -f '${Package}
+'
+2024-05-14 21:39:51,906 - DEBUG - rootfs - Running command: sudo chroot /home/rupali/.tern/temp/mergedir /bin/sh -c distro=`/bin/cat /etc/os-release | grep NAME | sed -n '2p' | cut -f 2 -d '=' | cut -d '"' -f2` && pkgs=`dpkg-query -W -f '${Package}
+'` && for p in $pkgs; do echo $distro; done
+2024-05-14 21:39:51,918 - DEBUG - rootfs - Running command: sudo chroot /home/rupali/.tern/temp/mergedir /bin/sh -c dpkg-query -W -f '${Version}
+'
+2024-05-14 21:39:51,929 - DEBUG - rootfs - Running command: sudo chroot /home/rupali/.tern/temp/mergedir /bin/sh -c dpkg-query -W -f '${Architecture}
+'
+2024-05-14 21:39:51,940 - DEBUG - core - Processing Debian copyrights...
+2024-05-14 21:39:52,033 - WARNING - core - Some metadata may be missing
+2024-05-14 21:40:07,543 - DEBUG - rootfs - Running command: sudo rm -rf /home/rupali/.tern/temp/mergedir
+2024-05-14 21:40:07,663 - DEBUG - rootfs - Running command: sudo rm -rf /home/rupali/.tern/temp/workdir
+2024-05-14 21:40:07,671 - DEBUG - rootfs - Running command: sudo rm -rf /home/rupali/.tern/temp/1/contents
+2024-05-14 21:40:07,828 - DEBUG - prep - Tearing down...
+2024-05-14 21:40:08,662 - DEBUG - __main__ - Finished
